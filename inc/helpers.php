@@ -747,7 +747,12 @@ if ( ! function_exists( 'oceanwp_header_page_id' ) ) {
 
 		// Get page ID from Customizer
 		$page_id = get_theme_mod( 'ocean_header_page_id' );
-
+		
+		// polylang compatibility
+		if ( function_exists('pll_get_post') ) {
+		   $page_id = pll_get_post( $page_id );
+		}
+		
 		// Get page content
 		if ( ! empty( $page_id ) ) {
 

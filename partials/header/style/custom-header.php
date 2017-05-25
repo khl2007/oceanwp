@@ -22,7 +22,10 @@ $get_page   = oceanwp_header_page_id();
 
 // Get page ID
 $get_id     = get_theme_mod( 'ocean_header_page_id' );
-
+// polylang compatibility 
+if ( function_exists('pll_get_post') ) {
+		   $get_id = pll_get_post( $get_id  );
+}
 // Check if page is Elementor page
 $elementor  = get_post_meta( $get_id, '_elementor_edit_mode', true );
 
